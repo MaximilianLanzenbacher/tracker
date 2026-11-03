@@ -1,4 +1,4 @@
-# Teller – Design-Notizen
+# Tracker – Design-Notizen
 
 ## Richtung
 Eine ruhige iPhone-App, die sich wie ein Werkzeug anfühlt. Das Leitbild ist der Teller: ein einzelner Ring, der sich im Laufe des Tages füllt. Er ist das eine Element, an das man sich erinnert. Alles andere ordnet sich unter.

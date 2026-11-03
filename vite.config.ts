@@ -15,8 +15,8 @@ export default defineConfig(({ mode }) => ({
       registerType: 'autoUpdate',
       includeAssets: ['icons/apple-touch-icon.png', 'icons/favicon.svg'],
       manifest: {
-        name: 'Teller',
-        short_name: 'Teller',
+        name: 'Tracker',
+        short_name: 'Tracker',
         description: 'Kalorien und Nährwerte per Barcode erfassen',
         lang: 'de',
         start_url: './',

@@ -57,7 +57,7 @@ export class ErrorBoundary extends Component<{ children: ReactNode }, State> {
 
   private reset = async () => {
     const ok = window.confirm(
-      'Der Speicher von Teller wird auf diesem Gerät geleert. Einträge, Gewicht und Ziele gehen dabei verloren, außer du hast sie vorher gesichert. Fortfahren?',
+      'Der Speicher von Tracker wird auf diesem Gerät geleert. Einträge, Gewicht und Ziele gehen dabei verloren, außer du hast sie vorher gesichert. Fortfahren?',
     )
     if (!ok) return
     this.setState({ busy: true })
@@ -80,7 +80,7 @@ export class ErrorBoundary extends Component<{ children: ReactNode }, State> {
         <h1 className="large-title">{storage ? 'Speicher reagiert nicht' : 'Etwas ist schiefgelaufen'}</h1>
         <p className="crash-text">
           {storage
-            ? 'Safari kann den Datenspeicher von Teller gerade nicht öffnen. Lade die App neu. Hilft das nicht, schließ alle Tabs mit Teller und öffne die App noch einmal.'
+            ? 'Safari kann den Datenspeicher von Tracker gerade nicht öffnen. Lade die App neu. Hilft das nicht, schließ alle Tabs mit Tracker und öffne die App noch einmal.'
             : 'Die App ist auf einen Fehler gestoßen. Lade sie neu, deine Daten bleiben erhalten.'}
         </p>
         <button type="button" className="btn" onClick={() => window.location.reload()} disabled={busy}>

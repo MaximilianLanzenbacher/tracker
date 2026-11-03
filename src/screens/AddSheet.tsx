@@ -196,7 +196,7 @@ function ScanPane({
     if (res.status === 'not-found') {
       return onManual(
         { barcode: code, name: '', per100: { kcal: 0, protein: 0, carbs: 0, fat: 0 }, incomplete: true },
-        'Dieses Produkt ist noch nicht in der Datenbank. Trag die Werte von der Verpackung ein, beim nächsten Scan kennt Teller es.',
+        'Dieses Produkt ist noch nicht in der Datenbank. Trag die Werte von der Verpackung ein, beim nächsten Scan kennt Tracker es.',
       )
     }
     setStatus({ kind: 'error', message: res.message, code })
