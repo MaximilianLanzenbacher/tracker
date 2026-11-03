@@ -14,26 +14,20 @@ function isStorageError(err: unknown): boolean {
   )
 }
 
-function readRetry(): boolean {
-  try {
-    return sessionStorage.getItem(RETRY_KEY) === '1'
-  } catch {
-    return true
-  }
-}
+// Höchstens ein automatisches Neuladen in diesem Zeitraum, damit nie eine Schleife entsteht.
+const RETRY_WINDOW_MS = 5 * 60 * 1000
 
-function writeRetry(on: boolean) {
+/** true, wenn jetzt ein automatischer Neuversuch erlaubt ist. Merkt sich den Versuch gleich mit. */
+function claimRetry(): boolean {
   try {
-    if (on) sessionStorage.setItem(RETRY_KEY, '1')
-    else sessionStorage.removeItem(RETRY_KEY)
+    const last = Number(localStorage.getItem(RETRY_KEY) ?? 0)
+    if (Date.now() - last < RETRY_WINDOW_MS) return false
+    localStorage.setItem(RETRY_KEY, String(Date.now()))
+    return localStorage.getItem(RETRY_KEY) !== null
   } catch {
-    // ohne sessionStorage einfach nicht automatisch neu versuchen
+    // Ohne funktionierenden Speicher lieber gar nicht automatisch neu laden.
+    return false
   }
-}
-
-/** Nach einem erfolgreichen Start darf beim nächsten Fehler wieder automatisch neu geladen werden. */
-export function markStartupOk() {
-  writeRetry(false)
 }
 
 interface State {
@@ -50,8 +44,7 @@ export class ErrorBoundary extends Component<{ children: ReactNode }, State> {
 
   componentDidCatch(error: unknown) {
     // Einmal von selbst neu verbinden und neu laden, das behebt hängende Verbindungen meist.
-    if (isStorageError(error) && !readRetry()) {
-      writeRetry(true)
+    if (isStorageError(error) && claimRetry()) {
       db.close()
       window.location.reload()
     }
@@ -72,7 +65,6 @@ export class ErrorBoundary extends Component<{ children: ReactNode }, State> {
       db.close()
       await Dexie.delete('teller')
     } finally {
-      writeRetry(false)
       window.location.reload()
     }
   }
