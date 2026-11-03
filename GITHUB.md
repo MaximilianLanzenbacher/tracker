@@ -1,4 +1,4 @@
-# Tracker auf GitHub Pages veröffentlichen
+# Teller auf GitHub Pages veröffentlichen
 
 So kommt die App unter eine feste https-Adresse, die du aufs iPhone holen kannst. Danach reicht ein `git push`, und die neue Version ist nach etwa einer Minute online.
 
@@ -7,7 +7,7 @@ Den Workflow dafür gibt es schon: `.github/workflows/deploy.yml` baut die App, 
 ## 1. Repository auf GitHub anlegen
 
 1. Melde dich auf [github.com](https://github.com) an und öffne [github.com/new](https://github.com/new).
-2. Bei **Repository name** trägst du `tracker` ein (oder einen anderen Namen).
+2. Bei **Repository name** trägst du `teller` ein (oder einen anderen Namen).
 3. Wähle **Public**. GitHub Pages ist im kostenlosen Konto nur für öffentliche Repositories verfügbar. Öffentlich ist dabei nur der Code. Deine Essens- und Gewichtsdaten bleiben auf deinem iPhone und landen nie auf GitHub.
 4. Lass **keinen** Haken bei README, .gitignore oder License setzen. Das Projekt hat diese Dateien schon.
 5. Klicke auf **Create repository**.
@@ -29,11 +29,11 @@ git add .
 ```
 
 ```bash
-git commit -m "Tracker: erste Version"
+git commit -m "Teller: erste Version"
 ```
 
 ```bash
-git remote add origin https://github.com/DEIN-NAME/tracker.git
+git remote add origin https://github.com/DEIN-NAME/teller.git
 ```
 
 ```bash
@@ -55,14 +55,14 @@ git config --global user.email "deine@mail.de"
 Unter **Actions** im Repository siehst du den Lauf „Veröffentlichen“. Wenn beide Schritte grün sind (etwa 1–2 Minuten), ist die App erreichbar unter:
 
 ```
-https://DEIN-NAME.github.io/tracker/
+https://DEIN-NAME.github.io/teller/
 ```
 
 ## 5. Aufs iPhone holen
 
 1. Öffne die Adresse in **Safari**. Andere Browser können auf dem iPhone keine Web-Apps installieren.
 2. Tippe auf das **Teilen-Symbol** (Quadrat mit Pfeil) und dann auf **Zum Home-Bildschirm**.
-3. Starte Tracker über das neue Icon. Beim ersten Scan fragt die App nach der Kamera. Erlaube den Zugriff.
+3. Starte Teller über das neue Icon. Beim ersten Scan fragt die App nach der Kamera. Erlaube den Zugriff.
 
 ## Später Änderungen veröffentlichen
 
@@ -84,5 +84,5 @@ Die installierte App holt sich die neue Version beim nächsten Start von selbst.
 
 - **Lauf unter Actions ist rot:** Klick auf den Lauf, dann auf den roten Schritt. Die Fehlermeldung steht ganz unten.
 - **Fehler „Get Pages site failed“ oder 404:** Schritt 2 fehlt. Stell Source auf **GitHub Actions** und starte den Lauf unter Actions über **Re-run all jobs** neu.
-- **Seite lädt, bleibt aber weiß:** Prüf, ob die Adresse mit `/tracker/` endet (mit Schrägstrich).
-- **Wichtig zu deinen Daten:** Sie hängen an der Adresse. Tracker unter `localhost` oder der Test-Adresse im WLAN hat andere Daten als die GitHub-Version. Nutze ab jetzt nur noch die Version vom Home-Bildschirm und sichere ab und zu unter **Ziele → Daten sichern**.
+- **Seite lädt, bleibt aber weiß:** Prüf, ob die Adresse mit `/teller/` endet (mit Schrägstrich).
+- **Wichtig zu deinen Daten:** Sie hängen an der Adresse. Teller unter `localhost` oder der Test-Adresse im WLAN hat andere Daten als die GitHub-Version. Nutze ab jetzt nur noch die Version vom Home-Bildschirm und sichere ab und zu unter **Ziele → Daten sichern**.

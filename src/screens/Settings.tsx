@@ -55,13 +55,13 @@ export function Settings({ onBack }: { onBack: () => void }) {
 
   const doExport = async () => {
     const data = await exportData()
-    const file = new File([JSON.stringify(data, null, 1)], `tracker-sicherung-${todayKey()}.json`, {
+    const file = new File([JSON.stringify(data, null, 1)], `teller-sicherung-${todayKey()}.json`, {
       type: 'application/json',
     })
     // Auf dem iPhone öffnet das Teilen-Menü, dort lässt sich die Datei in „Dateien“ sichern.
     if (navigator.canShare?.({ files: [file] })) {
       try {
-        await navigator.share({ files: [file], title: 'Tracker-Sicherung' })
+        await navigator.share({ files: [file], title: 'Teller-Sicherung' })
         return
       } catch (err) {
         if ((err as Error).name === 'AbortError') return
@@ -162,7 +162,7 @@ export function Settings({ onBack }: { onBack: () => void }) {
           <h2 className="group-title">Als App installieren</h2>
         </div>
         <p className="hint-text" style={{ marginTop: 0 }}>
-          Öffne Tracker in Safari, tippe auf das Teilen-Symbol und wähle „Zum Home-Bildschirm“. Danach startet Tracker wie eine
+          Öffne Teller in Safari, tippe auf das Teilen-Symbol und wähle „Zum Home-Bildschirm“. Danach startet Teller wie eine
           App, im Vollbild und auch ohne Internet.
         </p>
         <p className="hint-text faint">

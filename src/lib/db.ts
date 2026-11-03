@@ -86,7 +86,6 @@ export const DEFAULT_SETTINGS: Settings = {
   longestStreak: 0,
 }
 
-// Interner Name aus der ersten Version. Er bleibt, damit vorhandene Daten erhalten bleiben.
 export const db = new Dexie('teller') as Dexie & {
   products: EntityTable<Product, 'id'>
   entries: EntityTable<Entry, 'id'>
@@ -252,7 +251,6 @@ export async function deleteWeight(id: number) {
 // ---------- Sicherung ----------
 
 export interface Backup {
-  /** Kennung der Sicherungsdatei, bleibt für alte Sicherungen gleich */
   app: 'teller'
   version: 1
   exportedAt: string
@@ -274,7 +272,7 @@ export async function exportData(): Promise<Backup> {
 
 export async function importData(data: Backup) {
   if (data?.app !== 'teller' || !Array.isArray(data.entries)) {
-    throw new Error('Diese Datei ist keine Tracker-Sicherung.')
+    throw new Error('Diese Datei ist keine Teller-Sicherung.')
   }
   await db.transaction('rw', [db.products, db.entries, db.weights, db.settings], async () => {
     await Promise.all([db.products.clear(), db.entries.clear(), db.weights.clear(), db.settings.clear()])

@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App'
-import { ErrorBoundary } from './ui/ErrorBoundary'
 import './styles.css'
 
 async function boot() {
@@ -12,9 +11,7 @@ async function boot() {
   }
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
-      <ErrorBoundary>
-        <App />
-      </ErrorBoundary>
+      <App />
     </StrictMode>,
   )
 }

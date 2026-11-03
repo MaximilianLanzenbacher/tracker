@@ -1,11 +1,11 @@
 {
-  "name": "tracker",
+  "name": "teller",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "phone": "vite build && vite preview --host --mode phone --port 5443 --strictPort",
+    "dev:phone": "vite --host --mode phone",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest run",
