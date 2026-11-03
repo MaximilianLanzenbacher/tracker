@@ -1,4 +1,4 @@
-# Teller
+# Tracker
 
 Kalorien- und Nährwerttracker fürs iPhone als Web-App (PWA). Du scannst einen Barcode, und die Nährwerte kommen von Open Food Facts. Alle Daten bleiben lokal auf dem Gerät.
 
