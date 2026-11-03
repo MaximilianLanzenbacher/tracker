@@ -4,8 +4,8 @@ import react from '@vitejs/plugin-react'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { VitePWA } from 'vite-plugin-pwa'
 
-// `npm run dev:phone` startet den Server mit HTTPS im WLAN,
-// damit Safari auf dem iPhone die Kamera freigibt.
+// `npm run phone` baut die App und stellt sie per HTTPS im WLAN bereit,
+// damit Safari auf dem iPhone die Kamera freigibt. Das ist dieselbe Version wie auf GitHub Pages.
 export default defineConfig(({ mode }) => ({
   base: './',
   plugins: [
@@ -33,6 +33,7 @@ export default defineConfig(({ mode }) => ({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,wasm}'],
+        globIgnores: ['dev-sw.js'],
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
       },
     }),
