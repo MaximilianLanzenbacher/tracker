@@ -7,7 +7,7 @@ Kalorien- und Nährwerttracker fürs iPhone als Web-App (PWA). Du scannst einen 
 ```bash
 npm install           # einmalig
 npm run dev           # Entwicklung am PC: http://localhost:5173
-npm run dev:phone     # Test am iPhone über WLAN mit https, damit die Kamera geht
+npm run phone         # fertige App per https im WLAN, zum Testen am iPhone
 npm test              # Tests für Rechnungen, Streak und Open-Food-Facts-Zuordnung
 npm run build         # fertige App in dist/
 npm run icons         # App-Icons neu erzeugen
@@ -17,8 +17,8 @@ Beispieldaten in der Entwicklung: `http://localhost:5173/?demo`. **Achtung:** Da
 
 ## Am iPhone testen
 
-1. PC und iPhone müssen im selben WLAN sein. Starte `npm run dev:phone`.
-2. Öffne auf dem iPhone in Safari die angezeigte **Network**-Adresse, z. B. `https://192.168.x.x:5173`.
+1. PC und iPhone müssen im selben WLAN sein. Starte `npm run phone`.
+2. Öffne auf dem iPhone in Safari die angezeigte **Network**-Adresse, z. B. `https://192.168.x.x:5443`.
 3. Safari warnt vor dem Zertifikat. Wähle „Details einblenden“ und dann „Diese Website besuchen“.
 4. Falls Windows fragt, ob Node.js im Netzwerk kommunizieren darf, erlaube es für **private Netzwerke**.
 
