@@ -114,7 +114,7 @@ export function Scanner({ onDetect }: { onDetect: (code: string) => void }) {
         {state === 'running' && 'Halte den Barcode in den Rahmen'}
         {state === 'found' && 'Erkannt'}
         {state === 'denied' &&
-          'Teller darf die Kamera nicht benutzen. Erlaube den Zugriff unter Einstellungen > Safari > Kamera oder tipp den Barcode unten ein.'}
+          'Tracker darf die Kamera nicht benutzen. Erlaube den Zugriff unter Einstellungen > Safari > Kamera oder tipp den Barcode unten ein.'}
         {state === 'unavailable' &&
           'Die Kamera ist hier nicht verfügbar. Auf dem iPhone braucht die App dafür eine https-Adresse. Tipp den Barcode solange unten ein.'}
       </p>
