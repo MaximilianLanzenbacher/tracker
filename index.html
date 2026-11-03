@@ -15,6 +15,38 @@
     <title>Teller</title>
   </head>
   <body>
+    <script>
+      // Zeigt Startfehler direkt auf dem Bildschirm, weil Safari auf dem iPhone ohne Mac keine Konsole hat.
+      ;(function () {
+        function show(msg) {
+          var el = document.getElementById('boot-error')
+          if (!el) {
+            el = document.createElement('pre')
+            el.id = 'boot-error'
+            el.style.cssText =
+              'position:fixed;left:12px;right:12px;bottom:12px;z-index:99;margin:0;padding:12px;border-radius:12px;background:#fff3f0;color:#7a2414;font:12px/1.4 ui-monospace,monospace;white-space:pre-wrap;word-break:break-word'
+            document.body.appendChild(el)
+          }
+          el.textContent += msg + '\n'
+        }
+        window.addEventListener(
+          'error',
+          function (e) {
+            var t = e.target
+            if (t && t !== window && (t.src || t.href)) show('Datei nicht geladen: ' + (t.src || t.href))
+            else show('Fehler: ' + e.message + (e.filename ? ' (' + e.filename.split('/').pop() + ':' + e.lineno + ')' : ''))
+          },
+          true,
+        )
+        window.addEventListener('unhandledrejection', function (e) {
+          show('Fehler: ' + ((e.reason && e.reason.message) || e.reason))
+        })
+        setTimeout(function () {
+          var root = document.getElementById('root')
+          if (root && !root.children.length) show('Die App ist nicht gestartet.\n' + navigator.userAgent)
+        }, 8000)
+      })()
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
